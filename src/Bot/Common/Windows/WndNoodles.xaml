@@ -1,0 +1,15 @@
+﻿<b:EtWindow
+	x:Class="Bot.Common.Windows.WndNoodles" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:Bot.AssistWindow.NotifyIcon.MenuCreator" 
+    xmlns:b="clr-namespace:Bot.Common.Windows"
+	b:Title="来桶泡面"
+	Height="500"
+	Width="400">
+    <StackPanel>
+        <Image Source="{StaticResource imgNoodles}" ></Image>
+    </StackPanel>
+</b:EtWindow>

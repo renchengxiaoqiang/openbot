@@ -1,0 +1,88 @@
+<UserControl
+	x:Class="Bot.AssistWindow.Widget.Robot.CtlOneGoods"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.AssistWindow.Widget.Robot">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<ContextMenu
+				x:Key="menuGoodsTitle">
+				<MenuItem
+					Header="在浏览器中查看宝贝"
+					Click="btnOpenInBrowers_Click" />
+				<MenuItem
+					Header="去店铺后台编辑宝贝"
+					Click="btnOpenInShop_Click" />
+				<Separator />
+				<MenuItem
+					Header="复制宝贝链接（到剪贴板）"
+					Click="btnCopyGoodsUrl_Click" />
+				<MenuItem
+					Header="复制宝贝标题（到剪贴板）"
+					Click="btnCopyGoodsTitle_Click" />
+				<Separator />
+				<MenuItem
+					Header="复制宝贝ID（到剪贴板）"
+					Click="btnCopyGoodsNumiid_Click" />
+				<Separator />
+				<MenuItem
+					Header="复制商家编码（到剪贴板）"
+					Click="btnCopyOuterId_Click" />
+				<Separator
+					Tag="xx" />
+			</ContextMenu>
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition
+				Width="auto" />
+			<ColumnDefinition />
+			<ColumnDefinition
+				Width="auto" />
+		</Grid.ColumnDefinitions>
+		<local:CtlImage
+			x:Name="imgGoods"
+			Width="65"
+			Height="65"
+			Margin="2" />
+		<Grid
+			Column="1"
+			Margin="5">
+			<Grid.RowDefinitions>
+				<RowDefinition
+					Height="2*" />
+				<RowDefinition
+					Height="*" />
+			</Grid.RowDefinitions>
+			<TextBlock
+				Name="tblkTitle"
+				TextWrapping="Wrap" />
+			<TextBlock
+				Name="tblkOuterId"
+				Grid.Row="1" />
+		</Grid>
+		<Grid
+			Name="grdRight"
+			Column="2"
+			Width="67"
+			Margin="5">
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<TextBlock
+				Name="tblkPrice"
+				Text="123.00"
+				HorizontalAlignment="Center" />
+			<TextBlock
+				Name="tblkNum"
+				Text="452"
+				Grid.Row="1"
+				HorizontalAlignment="Center" />
+		</Grid>
+	</Grid>
+</UserControl>

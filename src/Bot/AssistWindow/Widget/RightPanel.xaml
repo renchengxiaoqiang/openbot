@@ -1,0 +1,196 @@
+<UserControl
+	x:Class="Bot.AssistWindow.Widget.RightPanel" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.AssistWindow.Widget"
+	Background="#FFFFFFFF">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<SolidColorBrush
+				Color="DeepSkyBlue"
+				x:Key="rpSkyBlueBrush" />
+			<SolidColorBrush
+				Color="White"
+				x:Key="rpWhiteBrush" />
+			<SolidColorBrush
+				Color="DodgerBlue"
+				x:Key="rpDodgerBlueBrush" />
+			<SolidColorBrush
+				Color="#EEE"
+				x:Key="rpDisabledBackgroundBrush" />
+			<SolidColorBrush
+				Color="#AAA"
+				x:Key="rpDisabledBorderBrush" />
+			<SolidColorBrush
+				Color="#888"
+				x:Key="rpDisabledForegroundBrush" />
+			<Style
+				TargetType="{x:Type TabItem}"
+				x:Key="tabRightPanel">
+				<Setter
+					Property="Template">
+					<Setter.Value>
+						<ControlTemplate
+							TargetType="{x:Type TabItem}">
+							<Grid>
+								<Border
+									Name="Border"
+									Margin="0,0,-4,0"
+									BorderThickness="1,1,1,1"
+									Background="{StaticResource rpWhiteBrush}"
+									BorderBrush="{StaticResource rpSkyBlueBrush}">
+									<ContentPresenter
+										Name="ContentSite"
+										VerticalAlignment="Center"
+										HorizontalAlignment="Center"
+										ContentSource="Header"
+										Margin="10,5"
+										RecognizesAccessKey="True" />
+								</Border>
+							</Grid>
+							<ControlTemplate.Triggers>
+								<Trigger
+									Property="TabItem.IsSelected"
+									Value="True">
+									<Setter
+										Property="Panel.ZIndex"
+										Value="100" />
+									<Setter
+										TargetName="Border"
+										Property="Background"
+										Value="{StaticResource rpDodgerBlueBrush}" />
+									<Setter
+										TargetName="Border"
+										Property="BorderThickness"
+										Value="1,1,1,0" />
+								</Trigger>
+								<Trigger
+									Property="IsEnabled"
+									Value="False">
+									<Setter
+										TargetName="Border"
+										Property="Background"
+										Value="{StaticResource rpDisabledBackgroundBrush}" />
+									<Setter
+										TargetName="Border"
+										Property="BorderBrush"
+										Value="{StaticResource rpDisabledBorderBrush}" />
+									<Setter
+										Property="Foreground"
+										Value="{StaticResource rpDisabledForegroundBrush}" />
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="32" />
+			<RowDefinition
+				Height="Auto" />
+			<RowDefinition
+				Height="*" />
+		</Grid.RowDefinitions>
+		<Rectangle
+			Grid.RowSpan="3"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch"
+			Fill="#FFFFFFFF"
+			Stroke="#FFD3D3D3"
+			StrokeThickness="1">
+			<UIElement.Effect>
+				<DropShadowEffect
+					BlurRadius="5"
+					ShadowDepth="0" />
+			</UIElement.Effect>
+		</Rectangle>
+        <Grid
+			Background="DodgerBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition
+					Width="auto" />
+                <ColumnDefinition
+					Width="auto" />
+                <ColumnDefinition
+					Width="auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel
+				Orientation="Horizontal">
+                <Image
+					Source="{StaticResource iconYellow}"
+					Margin="5" 
+                    />
+                <Label
+					Name="lblSeller"
+					VerticalAlignment="Center"
+					Foreground="#FFFFFFFF" />
+            </StackPanel>
+            <Button
+				Name="btnOption"
+				Grid.Column="2"
+				Background="#00FFFFFF"
+				Foreground="#FFFFFFFF"
+				Margin="5 1"
+				Padding="5 3"
+				Click="btnOption_Click">设置</Button>
+            <Button
+				Name="btnSyn"
+				Grid.Column="3"
+				Background="#00FFFFFF"
+				Foreground="#FFFFFFFF"
+				Margin="5 1"
+				Padding="5 3"
+                Click="btnHide_Click">隐藏</Button>
+        </Grid>
+        <Grid
+			Name="grdWaiting"
+            Grid.Row="1"
+			Background="#FFFFFFFF"
+			Visibility="Collapsed">
+            <ProgressBar
+				Height="4"
+				IsIndeterminate="True" />
+        </Grid>
+        <TabControl
+			Name="tabControl"
+			Grid.Row="2" />
+		<Rectangle
+			Grid.RowSpan="3"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Stretch"
+			Width="5"
+			Cursor="SizeWE"
+			Fill="#00FFFFFF"
+			MouseLeftButtonDown="rectWiden_MouseLeftButtonDown"
+			MouseLeftButtonUp="rectWiden_MouseLeftButtonUp"
+			MouseMove="rectWiden_MouseMove" />
+		<Rectangle
+			Grid.Row="2"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Bottom"
+			Height="5"
+			Cursor="SizeNS"
+			Fill="#00FFFFFF" 
+            MouseLeftButtonDown="rectHighden_MouseLeftButtonDown"
+			MouseLeftButtonUp="rectHighden_MouseLeftButtonUp"
+			MouseMove="rectHighden_MouseMove" />
+		<Rectangle
+			Grid.Row="2"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom"
+			Height="5"
+			Width="5"
+			Cursor="SizeNWSE"
+			Fill="#00FFFFFF"
+            MouseLeftButtonDown="rectCorner_MouseLeftButtonDown"
+			MouseLeftButtonUp="rectCorner_MouseLeftButtonUp"
+			MouseMove="rectCorner_MouseMove" />
+	</Grid>
+</UserControl>

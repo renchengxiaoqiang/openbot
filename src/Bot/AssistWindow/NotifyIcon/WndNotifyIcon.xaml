@@ -1,0 +1,44 @@
+<Window
+	x:Class="Bot.AssistWindow.NotifyIcon.WndNotifyIcon" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:Bot" 
+    xmlns:l="clr-namespace:Bot.AssistWindow.NotifyIcon" 
+    xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+	Title="QBot---Tray"
+	Width="550"
+	SizeToContent="Height"
+	WindowStartupLocation="CenterScreen"
+	WindowStyle="None"
+	AllowsTransparency="True"
+	Background="#00FFFFFF"
+	ShowInTaskbar="False">
+	<Grid>
+		<l:CtlNotifyIcon
+			x:Name="notifyIcon"
+			Icon="{StaticResource iconYellow}">
+			<l:CtlNotifyIcon.MenuItems>
+                <forms:ToolStripMenuItem
+					Text="帮助" />
+                <forms:ToolStripSeparator />
+				<forms:ToolStripSeparator />
+				<forms:ToolStripMenuItem
+					Text="退出" Click="btnExit_Click" />
+			</l:CtlNotifyIcon.MenuItems>
+		</l:CtlNotifyIcon>
+		<Image
+			Name="imgSplash"
+			Source="{StaticResource imgSplash}" />
+		<TextBlock
+			Name="tbkClose"
+			Foreground="#FF696969"
+			Visibility="Collapsed"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"
+			Background="#FFFFFFFF"
+			FontSize="30"
+			Padding="0 30">正在退出，保存数据中，请稍候...</TextBlock>
+	</Grid>
+</Window>

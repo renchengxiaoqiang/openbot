@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="Bot.AssistWindow.Widget.Robot.CtlConversation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bot.AssistWindow.Widget.Robot"
+             mc:Ignorable="d">
+    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="3" Margin="0 0 0 2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MinHeight="30"></RowDefinition>
+                <RowDefinition Height="*" MinHeight="30"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Background="LightSkyBlue" CornerRadius="2" Margin="2"/>
+            <TextBlock Text="问:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock x:Name="txtQuestion" Text="你好" Padding="2" Grid.Column="1" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            <Border Background="LightSkyBlue" Grid.Row="1"  CornerRadius="2" Margin="2"/>
+            <TextBlock Text="答:" Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center" />
+            <TextBlock x:Name="txtAnswer" Text="您好，欢迎光临本店..." Padding="2" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" 
+                       MouseLeftButtonDown="txtAnswer_MouseLeftButtonDown"
+                       VerticalAlignment="Center"/>
+        </Grid>
+    </Border>
+</UserControl>

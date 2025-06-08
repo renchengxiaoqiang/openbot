@@ -1,0 +1,14 @@
+<UserControl
+	x:Class="Bot.AssistWindow.Widget.Robot.CtlImage" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" >
+	<Grid>
+		<Image
+			Name="imgGoods"
+			MouseDown="imgGoods_MouseDown"
+			MouseEnter="imgGoods_MouseEnter"
+			MouseLeave="imgGoods_MouseLeave" />
+	</Grid>
+</UserControl>

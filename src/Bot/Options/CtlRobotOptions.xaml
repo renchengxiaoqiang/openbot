@@ -1,0 +1,35 @@
+<UserControl
+	x:Class="Bot.Options.CtlRobotOptions" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" >
+    <StackPanel Name="spnOther"
+			Background="#FFE0FFFF">
+        <StackPanel	Margin="15 0 15 15">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="5" VerticalAlignment="Center">BaseUrl：</TextBlock>
+                <TextBox x:Name="txtBaseUrl" Grid.Column="1" Height="22" Padding="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="300"></TextBox>
+                <TextBlock Margin="5"  Grid.Row="1" VerticalAlignment="Center">ApiKey：</TextBlock>
+                <TextBox x:Name="txtApiKey" Grid.Row="1" Grid.Column="1" Height="22" Padding="1"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="300"></TextBox>
+                <TextBlock Margin="5"  Grid.Row="2" VerticalAlignment="Center">Model</TextBlock>
+                <TextBox x:Name="txtModelName"  Grid.Row="2" Grid.Column="1" Height="22" Padding="1"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="300"></TextBox>
+            </Grid>
+
+            <GroupBox Header="SystemPrompt" Padding="2" Margin="0 5 0 0">
+                <StackPanel	Orientation="Horizontal" Margin="2 2">
+                    <TextBox x:Name="txtSystemPrompt" TextWrapping="Wrap" AcceptsReturn="True" Height="200" Width="450" Margin="0 0" ></TextBox>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

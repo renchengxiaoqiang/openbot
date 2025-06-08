@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8FF347E0-6E56-4E63-BC8B-D840C41E0F02}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DbEntity</RootNamespace>
+    <AssemblyName>DbEntity</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TopSdk, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\TopSdk.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AccountEntity.cs" />
+    <Compile Include="AutoTask\AutoTaskEntity.cs" />
+    <Compile Include="Core\EntityBase.cs" />
+    <Compile Include="Core\TreeCatalog.cs" />
+    <Compile Include="Core\TreeNode.cs" />
+    <Compile Include="Goods\GoodsKnowledgeEntity.cs" />
+    <Compile Include="Response\QnVersionResponse.cs" />
+    <Compile Include="Response\BuyerInfoResponse.cs" />
+    <Compile Include="Response\InputboxEmpty.cs" />
+    <Compile Include="Response\TaobaoItemSellerGetResponse.cs" />
+    <Compile Include="Response\TradeSendGoodsResponse.cs" />
+    <Compile Include="Response\ChatConversationResponse.cs" />
+    <Compile Include="Response\ItemRecordResponse.cs" />
+    <Compile Include="Response\MovieResponse.cs" />
+    <Compile Include="Response\MessageNotifyResponse.cs" />
+    <Compile Include="Response\ZnkfTradeQueryResponse.cs" />
+    <Compile Include="Response\ZnkfItemSearchResponse.cs" />
+    <Compile Include="Response\ShopCouponResponse.cs" />
+    <Compile Include="Response\AccountStatusResponse.cs" />
+    <Compile Include="Response\CouponResponse.cs" />
+    <Compile Include="Response\EmployeeResponse.cs" />
+    <Compile Include="Response\LocalUser.cs" />
+    <Compile Include="Response\QuickPhraseResponse.cs" />
+    <Compile Include="Response\SearchUserResponse.cs" />
+    <Compile Include="Response\TradeDecryptResponse.cs" />
+    <Compile Include="Sync\DownloadEntity.cs" />
+    <Compile Include="Sync\DownloadNickInfo.cs" />
+    <Compile Include="Sync\DownloadShopInfo.cs" />
+    <Compile Include="Sync\DownloadState.cs" />
+    <Compile Include="Hybrid\HybridEntity.cs" />
+    <Compile Include="Hybrid\HybridKey.cs" />
+    <Compile Include="Login\LoginDownloadEntity.cs" />
+    <Compile Include="Login\LoginUploadEntity.cs" />
+    <Compile Include="Sync\SynDownloadEntity.cs" />
+    <Compile Include="Sync\SynUploadEntity.cs" />
+    <Compile Include="Sync\TransferFileTypeEnum.cs" />
+    <Compile Include="Sync\UpdateDownloadEntity.cs" />
+    <Compile Include="Sync\UpdateUploadEntity.cs" />
+    <Compile Include="Sync\UploadEntity.cs" />
+    <Compile Include="Sync\UploadNickInfo.cs" />
+    <Compile Include="Trade\TradeEntity.cs" />
+    <Compile Include="WorkMode\WorkModeEnum.cs" />
+    <Compile Include="Option\OptionEntity.cs" />
+    <Compile Include="Util\ShareParams.cs" />
+    <Compile Include="Util\ShareUtil.cs" />
+    <Compile Include="Util\TbNickHelper.cs" />
+    <Compile Include="Util\UniformedString.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BotLib\BotLib.csproj">
+      <Project>{ee3d2c1a-1a43-4446-a169-27d8e860e2c3}</Project>
+      <Name>BotLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

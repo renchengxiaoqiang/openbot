@@ -1,0 +1,20 @@
+﻿<Window
+	x:Class="Bot.Common.Windows.WndTrayTip" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:Bot.Common.Windows"
+	Title="提示"
+	Height="200"
+	Width="400"
+	Topmost="True"
+	WindowStyle="ThreeDBorderWindow"
+	ShowInTaskbar="False"
+	ResizeMode="NoResize"
+	Background="#FFFFFFE0"
+	Icon="/Bot;component/Asset/Image/yellow.ico">
+    <FlowDocumentScrollViewer
+		Name="viewer"
+		ScrollViewer.VerticalScrollBarVisibility="Auto" />
+</Window>

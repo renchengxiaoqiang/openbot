@@ -1,0 +1,39 @@
+<Window
+	x:Class="Bot.AssistWindow.WndAssist" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:local="clr-namespace:Bot.AssistWindow" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:fa="clr-namespace:BotLib.Wpf.Controls;assembly=BotLib" 
+    xmlns:ctlp="clr-namespace:Bot.AssistWindow.Widget" 
+    xmlns:sb="clr-namespace:Delay;assembly=SplitButtonWpf"
+	Title="AssistMainWnd"
+	AllowsTransparency="True"
+	Background="#00FFFFFF"
+	WindowStyle="None"
+	ShowActivated="False"
+	ShowInTaskbar="False">
+	<Canvas
+		Name="canvas">
+		<Grid
+			Name="grdQnTab" />
+        <Button
+			Name="btnShowRight"
+			Padding="5 0"
+			Margin="5 2"
+            Width="80"
+            Height="25"
+			Visibility="Collapsed"
+			ToolTip="显示右面板"
+			Click="btnShowRight_Click">显示右面板&gt;</Button>
+        <ctlp:RightPanel
+			x:Name="ctlRightPanel" />
+        <Image
+			Name="imgBig"
+			Width="300"
+			Height="300"
+			Stretch="Uniform" />
+	</Canvas>
+</Window>
