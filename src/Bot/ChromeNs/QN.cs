@@ -8,7 +8,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Bot.Automation.ChatDeskNs;
-using Top.Api.Domain;
 using Bot.ChatRecord;
 using Newtonsoft.Json;
 using BotLib;
@@ -19,6 +18,7 @@ using BotLib.Wpf.Extensions;
 using OpenAI.Chat;
 using System.Text.Json;
 using Newtonsoft.Json.Linq;
+using static Bot.Params;
 
 namespace Bot.ChromeNs
 {
@@ -30,6 +30,7 @@ namespace Bot.ChromeNs
         public event EventHandler<RecieveNewMessageEventArgs> EvRecieveNewMessage;
         public event EventHandler<ShopRobotReceriveNewMessageEventArgs> EvShopRobotReceriveNewMessage;
         public static HashSet<QN> QNSet { get; set; }
+        public string QnVersion { get; set; }
 
         private CDPClient cdp;
         public CDPClient CDP
@@ -41,7 +42,6 @@ namespace Bot.ChromeNs
             set
             {
                 cdp = value;
-
                 cdp.EvBuyerSwitched -= Cdp_EvBuyerSwitched;
                 cdp.EvMessageNotity -= Cdp_EvMessageNotity;
                 cdp.EvRecieveNewMessage -= Cdp_EvRecieveNewMessage;
@@ -87,9 +87,17 @@ namespace Bot.ChromeNs
         }
 
 
-        public async void SendTextAsync(string buyer, string text)
+        public async Task SendTextAsync(string buyer, string text)
         {
-            await rpa.SendTextAsync(buyer, text);
+            var comparison = String.Compare(QnVersion, "9.19.06N", StringComparison.OrdinalIgnoreCase);
+            if (comparison < 0)
+            {
+                SendTimiMsg(buyer, text);
+            }
+            else
+            {
+                await rpa.SendTextAsync(buyer, text);
+            }
         }
 
 
@@ -143,10 +151,10 @@ namespace Bot.ChromeNs
 
                     if (isAutoReply)
                     {
-                        await rpa.SendTextAsync(m.fromid.nick, answer);
+                        await SendTextAsync(m.fromid.nick, answer);
                     }
                 }
-                await System.Threading.Tasks.Task.Delay(2000);
+                await Task.Delay(2000);
             });
 
         }

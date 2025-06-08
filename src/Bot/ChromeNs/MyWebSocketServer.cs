@@ -28,7 +28,9 @@ namespace Bot.ChromeNs
                 {
                     var cdp = new CDPClient(session);
                     var user = await cdp.GetCurrentUser();
+                    var ver = await cdp.GetVersion();
                     QN qn = QN.GetByNick(user.Result);
+                    qn.QnVersion = ver.version;
                     qn.CDP = cdp;
                     WndNotifyIcon.Inst.AddSellerMenuItem(qn.Seller.Nick);
                 };
