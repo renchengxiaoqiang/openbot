@@ -1,0 +1,536 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FlaUI.UIA3</name>
+    </assembly>
+    <members>
+        <member name="T:FlaUI.UIA3.Converters.AnnotationTypeConverter">
+            <summary>
+            Converter with converts between <see cref="T:Interop.UIAutomationClient.UIA_AnnotationTypes"/> and FlaUIs <see cref="T:FlaUI.Core.Definitions.AnnotationType"/>.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.AnnotationTypeConverter.ToAnnotationType(System.Object)">
+            <summary>
+            Converts a <see cref="T:Interop.UIAutomationClient.UIA_AnnotationTypes"/> to a FlaUI <see cref="T:FlaUI.Core.Definitions.AnnotationType"/>.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.AnnotationTypeConverter.ToAnnotationTypeNative(FlaUI.Core.Definitions.AnnotationType)">
+            <summary>
+            Converts a FlaUI <see cref="T:FlaUI.Core.Definitions.AnnotationType"/> to a <see cref="T:Interop.UIAutomationClient.UIA_AnnotationTypes"/>.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.AnnotationTypeConverter.ToAnnotationTypeArray(System.Object)">
+            <summary>
+            Converts an array of <see cref="T:Interop.UIAutomationClient.UIA_AnnotationTypes"/> to an array of FlaUI <see cref="T:FlaUI.Core.Definitions.AnnotationType"/>.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.Converters.AutomationElementConverter">
+            <summary>
+            Class that helps converting automation elements.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.AutomationElementConverter.NativeArrayToManaged(FlaUI.Core.AutomationBase,System.Object)">
+            <summary>
+            Converts a native array of elements to an array of managed elements.
+            </summary>
+            <param name="automation">The automation to use for the conversion.</param>
+            <param name="nativeElements">The native array to convert.</param>
+            <returns>The array of managed elements.</returns>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.AutomationElementConverter.NativeToManaged(FlaUI.Core.AutomationBase,System.Object)">
+            <summary>
+            Converts a native element to a managed element.
+            </summary>
+            <param name="automation">The automation to use for the conversion.</param>
+            <param name="nativeElement">The native element to convert.</param>
+            <returns>The converted managed element.</returns>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.AutomationElementConverter.ToNative(FlaUI.Core.AutomationElements.AutomationElement)">
+            <summary>
+            Converts a managed element to a native element.
+            </summary>
+            <param name="automationElement">The managed element to convert.</param>
+            <returns>The converted native element.</returns>
+        </member>
+        <member name="T:FlaUI.UIA3.Converters.ConditionConverter">
+            <summary>
+            Class which helps converting conditions between native and FlaUIs conditions.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.ConditionConverter.ToNative(FlaUI.UIA3.UIA3Automation,FlaUI.Core.Conditions.ConditionBase)">
+            <summary>
+            Converts a FlaUI <see cref="T:FlaUI.Core.Conditions.ConditionBase"/> to a native condition.
+            </summary>
+            <param name="automation">The automation to use for the conversion.</param>
+            <param name="condition">The condition to convert.</param>
+            <returns>The native condition.</returns>
+        </member>
+        <member name="T:FlaUI.UIA3.Converters.ControlTypeConverter">
+            <summary>
+            Converter with converts between <see cref="T:Interop.UIAutomationClient.UIA_ControlTypeIds"/> and FlaUIs <see cref="T:FlaUI.Core.Definitions.ControlType"/>.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.ControlTypeConverter.ToControlType(System.Object)">
+            <summary>
+            Converts a <see cref="T:Interop.UIAutomationClient.UIA_ControlTypeIds"/> to a FlaUI <see cref="T:FlaUI.Core.Definitions.ControlType"/>.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.ControlTypeConverter.ToControlTypeNative(FlaUI.Core.Definitions.ControlType)">
+            <summary>
+            Converts a FlaUI <see cref="T:FlaUI.Core.Definitions.ControlType"/> to a <see cref="T:Interop.UIAutomationClient.UIA_ControlTypeIds"/>.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.Converters.LandmarkTypeConverter">
+            <summary>
+            Converter with converts between <see cref="T:Interop.UIAutomationClient.UIA_LandmarkTypeIds"/> and FlaUIs <see cref="T:FlaUI.Core.Definitions.LandmarkType"/>.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.LandmarkTypeConverter.ToLandmarkType(System.Object)">
+            <summary>
+            Converts a <see cref="T:Interop.UIAutomationClient.UIA_LandmarkTypeIds"/> to a FlaUI <see cref="T:FlaUI.Core.Definitions.LandmarkType"/>.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.LandmarkTypeConverter.ToLandmarkTypeNative(FlaUI.Core.Definitions.LandmarkType)">
+            <summary>
+            Converts a FlaUI <see cref="T:FlaUI.Core.Definitions.LandmarkType"/> to a <see cref="T:Interop.UIAutomationClient.UIA_LandmarkTypeIds"/>.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.Converters.StyleTypeConverter">
+            <summary>
+            A converter to convert to <see cref="T:FlaUI.Core.Definitions.StyleType"/>.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.StyleTypeConverter.ToStyleType(System.Object)">
+            <summary>
+            Converts a native style type to FlaUIs <see cref="T:FlaUI.Core.Definitions.StyleType"/>.
+            </summary>
+            <param name="nativeStyleType">The native style type.</param>
+            <returns>The converted <see cref="T:FlaUI.Core.Definitions.StyleType"/>.</returns>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.StyleTypeConverter.ToStyleTypeNative(FlaUI.Core.Definitions.StyleType)">
+            <summary>
+            Converts a FlaUI <see cref="T:FlaUI.Core.Definitions.StyleType"/> to a native style type.
+            </summary>
+            <param name="styleType">The <see cref="T:FlaUI.Core.Definitions.StyleType"/> to convert.</param>
+            <returns>A native style type.</returns>
+        </member>
+        <member name="T:FlaUI.UIA3.Converters.TextRangeConverter">
+            <summary>
+            A class for converting text ranges between native and FlaUIs implementation.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.TextRangeConverter.NativeArrayToManaged(FlaUI.UIA3.UIA3Automation,Interop.UIAutomationClient.IUIAutomationTextRangeArray)">
+            <summary>
+            Converts a native text range array to a managed text range array.
+            </summary>
+            <param name="automation">The automation to use for the conversion.</param>
+            <param name="nativeTextRangeArray">The native text range array to convert.</param>
+            <returns>The converted managed text range array.</returns>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.TextRangeConverter.NativeToManaged(FlaUI.UIA3.UIA3Automation,Interop.UIAutomationClient.IUIAutomationTextRange)">
+            <summary>
+            Converts a native text range to a managed text range.
+            </summary>
+            <param name="automation">The automation to use for the conversion.</param>
+            <param name="nativeTextRange">The native text range to convert.</param>
+            <returns>The converted managed text range.</returns>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.TextRangeConverter.NativeToManaged(FlaUI.UIA3.UIA3Automation,Interop.UIAutomationClient.IUIAutomationTextRange2)">
+            <summary>
+            Converts a native text range 2 to a managed text range 2.
+            </summary>
+            <param name="automation">The automation to use for the conversion.</param>
+            <param name="nativeTextRange2">The native text range 2 to convert.</param>
+            <returns>The converted managed text range 2.</returns>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.TextRangeConverter.NativeToManaged(FlaUI.UIA3.UIA3Automation,Interop.UIAutomationClient.IUIAutomationTextRange3)">
+            <summary>
+            Converts a native text range 3 to a managed text range 3.
+            </summary>
+            <param name="automation">The automation to use for the conversion.</param>
+            <param name="nativeTextRange3">The native text range 3 to convert.</param>
+            <returns>The converted managed text range 3.</returns>
+        </member>
+        <member name="T:FlaUI.UIA3.Converters.ValueConverter">
+            <summary>
+            Class that helps converting various values between native and FlaUIs format.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.ValueConverter.ToNative(System.Object)">
+            <summary>
+            Converts the given object to an object the native client expects
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.ValueConverter.ToRectangle(System.Object)">
+            <summary>
+            Converts a native rectangle to a <see cref="T:System.Drawing.Rectangle"/>.
+            </summary>
+            <param name="rectangle">The native rectangle to convert.</param>
+            <returns>The converted managed rectangle.</returns>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.ValueConverter.ToPoint(System.Object)">
+            <summary>
+            Converts a native point to a <see cref="T:System.Drawing.Point"/>.
+            </summary>
+            <param name="point">The native point to convert.</param>
+            <returns>The converted managed point.</returns>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.ValueConverter.ToCulture(System.Object)">
+            <summary>
+            Converts a native culture to a <see cref="T:System.Globalization.CultureInfo"/>.
+            </summary>
+            <param name="cultureId">The native culture to convert.</param>
+            <returns>The converted managed culture.</returns>
+        </member>
+        <member name="M:FlaUI.UIA3.Converters.ValueConverter.IntToIntPtr(System.Object)">
+            <summary>
+            Converts an integer to an <see cref="T:System.IntPtr"/>.
+            </summary>
+            <param name="intPtrAsInt">The integer to convert.</param>
+            <returns>The converted IntPtr.</returns>
+        </member>
+        <member name="T:FlaUI.UIA3.EventHandlers.UIA3FocusChangedEventHandler">
+            <summary>
+            UIA2 implementation of a focus changed event handler.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.EventHandlers.UIA3PropertyChangedEventHandler">
+            <summary>
+            UIA3 implementation of a property changed event handler.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.EventHandlers.UIA3StructureChangedEventHandler">
+            <summary>
+            UIA3 implementation of a structure changed event handler.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.EventHandlers.UIA3TextEditTextChangedEventHandler">
+            <summary>
+            UIA3 implementation of a text edit text changed event handler.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.Identifiers.AutomationObjectIds">
+            <summary>
+            Class that holds all automation object ids available.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.Identifiers.TextAttributes">
+            <summary>
+            Class that holds all text attribute ids available.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.Patterns.InvokePattern">
+            <summary>
+            Class for an UIA3 <see cref="T:FlaUI.Core.Patterns.IInvokePattern"/>.
+            </summary>
+        </member>
+        <member name="F:FlaUI.UIA3.Patterns.InvokePattern.Pattern">
+            <summary>
+            The <see cref="T:FlaUI.Core.Identifiers.PatternId"/> for this pattern.
+            </summary>
+        </member>
+        <member name="F:FlaUI.UIA3.Patterns.InvokePattern.InvokedEvent">
+            <summary>
+            The <see cref="T:FlaUI.Core.Identifiers.EventId"/> for the invoked event.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Patterns.InvokePattern.#ctor(FlaUI.Core.FrameworkAutomationElementBase,Interop.UIAutomationClient.IUIAutomationInvokePattern)">
+            <summary>
+            Creates an UIA3 <see cref="T:FlaUI.Core.Patterns.IInvokePattern"/>.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.Patterns.InvokePattern.Invoke">
+            <inheritdoc />
+        </member>
+        <member name="T:FlaUI.UIA3.Patterns.InvokePatternEventIds">
+            <summary>
+            Class for UIA3 <see cref="T:FlaUI.Core.Patterns.IInvokePatternEventIds"/>.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.Patterns.InvokePatternEventIds.InvokedEvent">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.Patterns.ValuePattern.SetValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlaUI.UIA3.UIA3Automation">
+            <summary>
+            Automation implementation for UIA3.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.TreeWalkerFactory">
+            <inheritdoc />
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.AutomationType">
+            <inheritdoc />
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.NotSupportedValue">
+            <inheritdoc />
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.MixedAttributeValue">
+            <inheritdoc />
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.TransactionTimeout">
+            <inheritdoc />
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.ConnectionTimeout">
+            <inheritdoc />
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.ConnectionRecoveryBehavior">
+            <inheritdoc />
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.CoalesceEvents">
+            <inheritdoc />
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.NativeAutomation">
+            <summary>
+            Native object for the ui automation.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.NativeAutomation2">
+            <summary>
+            Native object for Windows 8 automation.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.NativeAutomation3">
+            <summary>
+            Native object for Windows 8.1 automation.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.NativeAutomation4">
+            <summary>
+            Native object for Windows 10 automation.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.NativeAutomation5">
+            <summary>
+            Native object for second Windows 10 automation.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3Automation.NativeAutomation6">
+            <summary>
+            Native object for third Windows 10 automation.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3Automation.GetDesktop">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3Automation.FromPoint(System.Drawing.Point)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3Automation.FromHandle(System.IntPtr)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3Automation.FocusedElement">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3Automation.RegisterFocusChangedEvent(System.Action{FlaUI.Core.AutomationElements.AutomationElement})">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3Automation.UnregisterFocusChangedEvent(FlaUI.Core.EventHandlers.FocusChangedEventHandlerBase)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3Automation.UnregisterAllEvents">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3Automation.Compare(FlaUI.Core.AutomationElements.AutomationElement,FlaUI.Core.AutomationElements.AutomationElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3Automation.InitializeAutomation">
+            <summary>
+            Initializes the automation object with the correct instance.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3Automation.GetAutomationAs``1">
+            <summary>
+            Tries to cast the automation to a specific interface.
+            Throws an exception if that is not possible.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3FrameworkAutomationElement.Automation">
+            <summary>
+            Concrete implementation of the automation object.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3FrameworkAutomationElement.NativeElement">
+            <summary>
+            Native object for the ui element.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3FrameworkAutomationElement.NativeElement2">
+            <summary>
+            Native object for Windows 8 ui element.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3FrameworkAutomationElement.NativeElement3">
+            <summary>
+            Native object for Windows 8.1 ui element.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3FrameworkAutomationElement.NativeElement4">
+            <summary>
+            Native object for Windows 10 ui element.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3FrameworkAutomationElement.NativeElement5">
+            <summary>
+            Native object for the second Windows 10 ui element.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3FrameworkAutomationElement.NativeElement6">
+            <summary>
+            Native object for the third Windows 10 ui element.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3FrameworkAutomationElement.NativeElement7">
+            <summary>
+            Native object for the fourth for Windows 10 ui element.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3FrameworkAutomationElement.NativeElement8">
+            <summary>
+            Native object for the fifth for Windows 10 ui element.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3FrameworkAutomationElement.NativeElement9">
+            <summary>
+            Native object for the sixth for Windows 10 ui element.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.FindAll(FlaUI.Core.Definitions.TreeScope,FlaUI.Core.Conditions.ConditionBase)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.FindFirst(FlaUI.Core.Definitions.TreeScope,FlaUI.Core.Conditions.ConditionBase)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.FindAllWithOptions(FlaUI.Core.Definitions.TreeScope,FlaUI.Core.Conditions.ConditionBase,FlaUI.Core.Definitions.TreeTraversalOptions,FlaUI.Core.AutomationElements.AutomationElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.FindFirstWithOptions(FlaUI.Core.Definitions.TreeScope,FlaUI.Core.Conditions.ConditionBase,FlaUI.Core.Definitions.TreeTraversalOptions,FlaUI.Core.AutomationElements.AutomationElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.FindAt(FlaUI.Core.Definitions.TreeScope,System.Int32,FlaUI.Core.Conditions.ConditionBase)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.TryGetClickablePoint(System.Drawing.Point@)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.RegisterActiveTextPositionChangedEvent(FlaUI.Core.Definitions.TreeScope,System.Action{FlaUI.Core.AutomationElements.AutomationElement,FlaUI.Core.ITextRange})">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.RegisterAutomationEvent(FlaUI.Core.Identifiers.EventId,FlaUI.Core.Definitions.TreeScope,System.Action{FlaUI.Core.AutomationElements.AutomationElement,FlaUI.Core.Identifiers.EventId})">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.RegisterPropertyChangedEvent(FlaUI.Core.Definitions.TreeScope,System.Action{FlaUI.Core.AutomationElements.AutomationElement,FlaUI.Core.Identifiers.PropertyId,System.Object},FlaUI.Core.Identifiers.PropertyId[])">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.RegisterStructureChangedEvent(FlaUI.Core.Definitions.TreeScope,System.Action{FlaUI.Core.AutomationElements.AutomationElement,FlaUI.Core.Definitions.StructureChangeType,System.Int32[]})">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.RegisterNotificationEvent(FlaUI.Core.Definitions.TreeScope,System.Action{FlaUI.Core.AutomationElements.AutomationElement,FlaUI.Core.Definitions.NotificationKind,FlaUI.Core.Definitions.NotificationProcessing,System.String,System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.RegisterTextEditTextChangedEventHandler(FlaUI.Core.Definitions.TreeScope,FlaUI.Core.Definitions.TextEditChangeType,System.Action{FlaUI.Core.AutomationElements.AutomationElement,FlaUI.Core.Definitions.TextEditChangeType,System.String[]})">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.UnregisterActiveTextPositionChangedEventHandler(FlaUI.Core.EventHandlers.ActiveTextPositionChangedEventHandlerBase)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.UnregisterAutomationEventHandler(FlaUI.Core.EventHandlers.AutomationEventHandlerBase)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.UnregisterPropertyChangedEventHandler(FlaUI.Core.EventHandlers.PropertyChangedEventHandlerBase)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.UnregisterStructureChangedEventHandler(FlaUI.Core.EventHandlers.StructureChangedEventHandlerBase)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.UnregisterNotificationEventHandler(FlaUI.Core.EventHandlers.NotificationEventHandlerBase)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.UnregisterTextEditTextChangedEventHandler(FlaUI.Core.EventHandlers.TextEditTextChangedEventHandlerBase)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3FrameworkAutomationElement.GetAutomationElementAs``1">
+            <summary>
+            Tries to cast the automation element to a specific interface.
+            Throws an exception if that is not possible.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.UIA3PatternLibrary">
+            <summary>
+            Implements a pattern library for the UIA3 patterns.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3PatternLibrary.AllForCurrentFramework">
+            <inheritdoc />
+        </member>
+        <member name="T:FlaUI.UIA3.UIA3PropertyLibrary">
+            <summary>
+            Implements a property library for the UIA3 patterns.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.UIA3TextAttributeLibrary">
+            <summary>
+            Implements a text attribute library for the UIA3 text attributes.
+            </summary>
+        </member>
+        <member name="T:FlaUI.UIA3.UIA3TreeWalker">
+            <summary>
+            Class for a UIA3 tree walker.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3TreeWalker.#ctor(FlaUI.UIA3.UIA3Automation,Interop.UIAutomationClient.IUIAutomationTreeWalker)">
+            <summary>
+            Creates a UIA3 tree walker.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3TreeWalker.Automation">
+            <summary>
+            The current <see cref="T:FlaUI.Core.AutomationBase"/> object.
+            </summary>
+        </member>
+        <member name="P:FlaUI.UIA3.UIA3TreeWalker.NativeTreeWalker">
+            <summary>
+            The native tree walker object.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3TreeWalker.GetParent(FlaUI.Core.AutomationElements.AutomationElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3TreeWalker.GetFirstChild(FlaUI.Core.AutomationElements.AutomationElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3TreeWalker.GetLastChild(FlaUI.Core.AutomationElements.AutomationElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3TreeWalker.GetNextSibling(FlaUI.Core.AutomationElements.AutomationElement)">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3TreeWalker.GetPreviousSibling(FlaUI.Core.AutomationElements.AutomationElement)">
+            <inheritdoc />
+        </member>
+        <member name="T:FlaUI.UIA3.UIA3TreeWalkerFactory">
+            <summary>
+            Factory to create tree walkers for UIA3.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3TreeWalkerFactory.#ctor(FlaUI.UIA3.UIA3Automation)">
+            <summary>
+            Creates a UIA3 tree walker factory.
+            </summary>
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3TreeWalkerFactory.GetControlViewWalker">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3TreeWalkerFactory.GetContentViewWalker">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3TreeWalkerFactory.GetRawViewWalker">
+            <inheritdoc />
+        </member>
+        <member name="M:FlaUI.UIA3.UIA3TreeWalkerFactory.GetCustomTreeWalker(FlaUI.Core.Conditions.ConditionBase)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
