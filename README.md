@@ -50,7 +50,7 @@
       <td align="center"><strong>微信赞赏码</strong></td>
     </tr>
     <tr>
-      <td><img src="https://worklink.oss-cn-hangzhou.aliyuncs.com/3F5E097C256C2712F0E35FE214BF681C.png"  width="300px" alt="微信交流群"></td>
+      <td><img src="https://worklink.oss-cn-hangzhou.aliyuncs.com/A46B00F78E121B11EE92DC3D2E91C207.png"  width="300px" alt="微信交流群"></td>
       <td><img src="https://worklink.oss-cn-hangzhou.aliyuncs.com/D8512B5B322FFAAC3D6927982A12B078.jpg"  width="300px" alt="微信赞赏码"></td>
     </tr>
   </table>
