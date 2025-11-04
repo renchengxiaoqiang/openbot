@@ -27,17 +27,36 @@ namespace Bot.ChromeNs
             var baseUrl = Params.Robot.GetBaseUrl();
             var model = Params.Robot.GetModelName();
             buyerChatMessages = new ConcurrentDictionary<string, List<ChatMessage>>();
-            ChatClient = new ChatClient(model: model, credential: new System.ClientModel.ApiKeyCredential(apikey)
-                            , options: new OpenAIClientOptions
-                            {
-                                Endpoint = new Uri(baseUrl)
-                            });
+
+            // Check if required parameters are not empty
+            if (!string.IsNullOrEmpty(apikey) && !string.IsNullOrEmpty(model))
+            {
+                ChatClient = new ChatClient(model: model, credential: new System.ClientModel.ApiKeyCredential(apikey)
+                                , options: string.IsNullOrEmpty(baseUrl) ? null : new OpenAIClientOptions
+                                {
+                                    Endpoint = new Uri(baseUrl)
+                                });
+            }
             systemPrompt = Params.Robot.GetSystemPrompt();
         }
 
 
         public static string GetAnswer(string seller, string buyer, string question)
         {
+            // Check if ChatClient is initialized
+            if (ChatClient == null)
+            {
+                var apikey = Params.Robot.GetApiKey();
+                var model = Params.Robot.GetModelName();
+
+                if (string.IsNullOrEmpty(apikey) || string.IsNullOrEmpty(model))
+                {
+                    return "错误：未配置AI参数，请在设置中配置API密钥和模型名称";
+                }
+
+                return "错误：AI客户端未正确初始化";
+            }
+
             var key = string.Format("{0}#{1}", seller, buyer);
             var messages = buyerChatMessages.xTryGetValue(key);
             if (messages == null || messages.Count < 1)
