@@ -11,7 +11,6 @@ using Bot.Common.Db;
 using Bot.Common;
 using BotLib.Wpf.Extensions;
 using Bot.ChromeNs;
-using SunnyNetInject;
 
 namespace Bot
 {

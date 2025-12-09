@@ -142,7 +142,7 @@ namespace Bot.AssistWindow.Widget
 				case "商品":
 					tabType = TabTypeEnum.Goods;
 					break;
-                case "机器人":
+                case "工作台":
                     tabType = TabTypeEnum.Robot;
                     break;
             }
@@ -184,7 +184,7 @@ namespace Bot.AssistWindow.Widget
         {
             return new TabItem
             {
-                Header = "机器人",
+                Header = "工作台",
                 Content = new CtlRobot(Wnd.Desk,this)
             };
         }

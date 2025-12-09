@@ -131,7 +131,7 @@ namespace Bot
 
         public class Panel
         {
-            public const string RightPanelCompOrderCsvDefault = "机器人";//"话术,商品,机器人,订单,优惠券";
+            public const string RightPanelCompOrderCsvDefault = "工作台";//"话术,商品,机器人,订单,优惠券";
             public const bool ShortcutIsVisibleDefault = true;
             public const bool GoodsKnowledgeIsVisibleDefault = true;
             public const bool RobotIsVisibleDefault = true;
