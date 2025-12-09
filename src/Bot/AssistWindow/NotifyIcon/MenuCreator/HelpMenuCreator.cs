@@ -53,7 +53,6 @@ namespace Bot.AssistWindow.NotifyIcon.MenuCreator
             var sb = new StringBuilder();
             sb.Append("软件版本：");
             sb.AppendLine(Params.VersionStr);
-            sb.AppendLine("vx：ss367263");
             MsgBox.ShowTip(sb.ToString(), "关于");
         }
 

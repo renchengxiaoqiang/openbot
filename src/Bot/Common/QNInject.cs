@@ -14,48 +14,68 @@ using System.Windows;
 
 namespace Bot.Common
 {
-    public class AliWorkbenchInject
+    public class QNInject
     {
-        private const string AppName = "千牛工作台";
-        private const string ExeName = "AliWorkbench.exe";
-        private const string ShortcutName = "千牛工作台.lnk";
-        private const string WebuiResDir = "newWebui";
-        private const string WebuiFile = "webui.zip";
-        private const string SignFile = "sign.json";
-        private const string ChatRecentHtmlFile = @"web_chat-packer/recent.html";
-        private const string ImSupportUrl = @"https://iseiya.taobao.com/imsupport";
-        private const string OverWriteUrl = "https://worklink.oss-cn-hangzhou.aliyuncs.com/5CFB5E11D17E63CDD8CB37B52FA6ACFD.js"; 
+        private const string processName = "AliWorkbench.exe";
+        private const string webuiResDir = "newWebui";
+        private const string webuiFile = "webui.zip";
+        private const string signFile = "sign.json";
+        private const string chatRecentHtmlFile = @"web_chat-packer/recent.html";
+        private const string imSupportUrl = @"https://iseiya.taobao.com/imsupport";
+        private const string overWriteUrl = "https://worklink.oss-cn-hangzhou.aliyuncs.com/5CFB5E11D17E63CDD8CB37B52FA6ACFD.js"; 
 
 
-        public static WorkbenchResult ProcessWorkbench()
+        public static async Task StartInject()
         {
             try
             {
                 string installPath = FindInstallPath();
                 if (string.IsNullOrEmpty(installPath))
                 {
-                    return new WorkbenchResult { Status = WorkbenchStatus.NotInstalled };
+                    MessageBox.Show("没有检测到安装的千牛!!");
                 }
 
                 var resourcePath = FindResourcePath(installPath);
                 if (string.IsNullOrEmpty(resourcePath))
                 {
-                    return new WorkbenchResult { Status = WorkbenchStatus.ResourceNotFound };
+                    MessageBox.Show("获取千牛资源目录失败!!");
+                    return;
+                }
+
+                if (IsInjected(resourcePath))
+                {
+                    return;
                 }
 
                 if (IsWorkbenchRunning())
                 {
-                    return new WorkbenchResult { Status = WorkbenchStatus.Running };
+                    if (MessageBox.Show("请先退出千牛，在运行此程序!!", "提示", MessageBoxButton.YesNo)
+                        == MessageBoxResult.No)
+                    {
+                        return;
+                    }
+                    else {
+                        foreach (var p in Process.GetProcessesByName(processName))
+                        {
+                            p.Kill();
+                        }
+                    }
+                    await Task.Delay(2000);
                 }
 
 
-                InjectScript(resourcePath);
-
-                return new WorkbenchResult { Status = WorkbenchStatus.Success };
+                if (InjectScript(resourcePath))
+                {
+                    MessageBox.Show("千牛插件注入成功，请重新启动千牛!!");
+                }
+                else
+                {
+                    MessageBox.Show("千牛插件注入失败!!");
+                }
             }
             catch (Exception ex)
             {
-                return new WorkbenchResult { Status = WorkbenchStatus.Failed, Message = ex.Message };
+                Log.Exception(ex);
             }
         }
 
@@ -85,7 +105,7 @@ namespace Bot.Common
             var aliWorkbenchConfigPath = Path.Combine(installPath, "AliWorkbench.ini");
             if (File.Exists(aliWorkbenchConfigPath))
             {
-                var version = ReadIniFile(aliWorkbenchConfigPath);
+                var version = ReadAliConfigFile(aliWorkbenchConfigPath);
                 return Path.Combine(installPath, version, "Resources");
             }
             return string.Empty;
@@ -94,27 +114,44 @@ namespace Bot.Common
 
         private static bool IsWorkbenchRunning()
         {
-            var processes = Process.GetProcessesByName(ExeName.Replace(".exe", ""));
+            var processes = Process.GetProcessesByName(processName);
             return processes.Length > 0;
         }
 
-        private static void InjectScript(string resourcePath)
+        public static bool IsInjected(string resourcePath)
         {
-            var webuiResPath = Path.Combine(resourcePath, WebuiResDir,WebuiFile);
-            var signPath = Path.Combine(resourcePath, WebuiResDir, SignFile);
-
+            var webuiResPath = Path.Combine(resourcePath, webuiResDir, webuiFile);
             using (var zipFile = new ZipFile(webuiResPath))
             {
-                var entry = zipFile.GetEntry(ChatRecentHtmlFile);
+                var entry = zipFile.GetEntry(chatRecentHtmlFile);
                 using (var inputStream = zipFile.GetInputStream(entry))
                 {
                     using (var streamReader = new StreamReader(inputStream))
                     {
                         var chatRecentHtmlContent = streamReader.ReadToEnd();
-                        if (!chatRecentHtmlContent.Contains(ImSupportUrl)) return;
-                        chatRecentHtmlContent = chatRecentHtmlContent.Replace(ImSupportUrl, OverWriteUrl);
+                        return !chatRecentHtmlContent.Contains(imSupportUrl);
+                    }
+                }
+            }
+        }
+
+        private static bool InjectScript(string resourcePath)
+        {
+            var webuiResPath = Path.Combine(resourcePath, webuiResDir,webuiFile);
+            var signPath = Path.Combine(resourcePath, webuiResDir, signFile);
+
+            using (var zipFile = new ZipFile(webuiResPath))
+            {
+                var entry = zipFile.GetEntry(chatRecentHtmlFile);
+                using (var inputStream = zipFile.GetInputStream(entry))
+                {
+                    using (var streamReader = new StreamReader(inputStream))
+                    {
+                        var chatRecentHtmlContent = streamReader.ReadToEnd();
+                        if (!chatRecentHtmlContent.Contains(imSupportUrl)) return true;
+                        chatRecentHtmlContent = chatRecentHtmlContent.Replace(imSupportUrl, overWriteUrl);
                         zipFile.BeginUpdate();
-                        zipFile.Add(new ZipStaticDataSource(chatRecentHtmlContent), ChatRecentHtmlFile);
+                        zipFile.Add(new ZipStaticDataSource(chatRecentHtmlContent), chatRecentHtmlFile);
                         zipFile.CommitUpdate();
                         if (File.Exists(signPath))
                         {
@@ -125,16 +162,17 @@ namespace Bot.Common
                                 File.Create(signPath);
                             }
                         }
+                        return true;
                     }
                 }
             }
 
         }
 
-        private static string ReadIniFile(string path)
+        private static string ReadAliConfigFile(string path)
         {
             var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile(path);
+            var data = parser.ReadFile(path);
             string version = data["Common"]["Version"];
             return version;
         }

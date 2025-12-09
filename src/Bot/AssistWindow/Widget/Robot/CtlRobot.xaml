@@ -9,32 +9,25 @@
     <Grid Margin="0">
         <Grid.RowDefinitions>
             <!-- 商品信息 -->
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="35"/>
             <!-- 聊天内容 -->
             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        
+        </Grid.RowDefinitions>       
 
         <!-- 商品信息 -->
-        <Border x:Name="bdGoods" Padding="1" BorderBrush="#DDD" BorderThickness="1" Height="70">
-            <StackPanel x:Name="stkGoods">
-                <Grid
-				    Name="grdDownGoods"
-				    Row="1"
-				    Background="#FFFFFFFF"
-				    Visibility="Collapsed">
-                    <ProgressBar
-					    Height="20"
-					    Margin="20"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel x:Name="panelGoods">
+                <ProgressBar x:Name="pgDownGoods"
+					    Height="5"
+					    Margin="2"
+                        Visibility="Collapsed"
 					    IsIndeterminate="True" />
-                </Grid>
-                <Grid Name="grdTipNoGoods" Background="#FFFFFFFF" Height="70">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="暂无咨询商品" />
-                </Grid>
             </StackPanel>
-        </Border>
+        </Grid>
 
         <Grid Background="DeepSkyBlue" Grid.Row="1" Margin="0 0 0 5">
             <Grid.RowDefinitions>

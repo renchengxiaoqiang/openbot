@@ -89,59 +89,78 @@ namespace Bot.AssistWindow.Widget.Robot
 
         private void ShowGridTip(Grid gd)
         {
-            grdTipNoGoods.xIsVisible(gd == grdTipNoGoods);
-            grdDownGoods.xIsVisible(gd == grdDownGoods);
             grdTipNoConv.xIsVisible(gd == grdTipNoConv);
             grdShowConv.xIsVisible(gd == grdShowConv);
         }
 
-        public async void ReShowAfterQNChange()
+        public void ReShowAfterQNChange()
         {
             if (QN.CurQN != null)
             {
                 _preQN = QN.CurQN;
-                ShowGridTip(grdShowConv);
-                ShowGridTip(grdDownGoods);
-                //咨询的商品
-                var itemRecord = await _preQN.GetItemRecords(_preQN.Buyer.TargetId);
-                if (itemRecord.data == null || itemRecord.data.underInquiryItemList == null)
-                {
-                    //bdGoods.Child = grdTipNoGoods;
 
-                    ShowGridTip(grdTipNoGoods);
-                }
-                else
+                RefreshItems();
+
+                RefreshConversations();
+
+            }
+        }
+
+        private void RefreshConversations()
+        {
+            var key = string.Format("{0}#{1}", _preQN.Seller.Nick, _preQN.Buyer.Nick);
+            var conversations = buyerConversations.xTryGetValue(key);
+            stkDialog.Children.Clear();
+            if (conversations != null && conversations.Count > 0)
+            {
+                conversations.ForEach(conv => stkDialog.Children.Add(conv));
+                scvBody.ScrollToEnd();
+                grdTipNoConv.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ShowGridTip(grdTipNoConv);
+                stkDialog.Children.Add(grdTipNoConv);
+            }
+        }
+
+        private async void RefreshItems()
+        {
+            pgDownGoods.Visibility = Visibility.Visible;
+            RemoveCtlGoods();
+            //咨询的商品
+            var itemRecord = await _preQN.GetItemRecords(_preQN.Buyer.TargetId);
+            if (itemRecord.data == null || itemRecord.data.underInquiryItemList == null)
+            {
+                pgDownGoods.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                var inquiryItems = itemRecord.data.underInquiryItemList;
+                if (inquiryItems != null && inquiryItems.Count > 0)
                 {
-                    var inquiryItems = itemRecord.data.underInquiryItemList;
-                    if (inquiryItems != null && inquiryItems.Count > 0)
+                    foreach (var item in inquiryItems)
                     {
-                        var item = inquiryItems.First();
                         var ctlGoods = new CtlOneGoods(item);
-                        //bdGoods.Child = ctlGoods;
-                        stkGoods.Children.Add(ctlGoods);
-                        grdTipNoGoods.Visibility = Visibility.Collapsed;
-                    }
-                    else
-                    {
-                        //bdGoods.Child = grdTipNoGoods;
-                        ShowGridTip(grdTipNoGoods);
+                        panelGoods.Children.Add(ctlGoods);
                     }
                 }
+                pgDownGoods.Visibility = Visibility.Collapsed;
+            }
+        }
 
-
-                var key = string.Format("{0}#{1}", _preQN.Seller.Nick, _preQN.Buyer.Nick);
-                var conversations = buyerConversations.xTryGetValue(key);
-                stkDialog.Children.Clear();
-                if (conversations != null && conversations.Count > 0)
+        private void RemoveCtlGoods()
+        {
+            var idx = 0;
+            while (idx < panelGoods.Children.Count)
+            {
+                if (panelGoods.Children[idx] is CtlOneGoods)
                 {
-                    conversations.ForEach(conv => stkDialog.Children.Add(conv));
-                    scvBody.ScrollToEnd();
-                    grdTipNoConv.Visibility = Visibility.Collapsed;
+                    panelGoods.Children.RemoveAt(idx);
                 }
                 else
                 {
-                    ShowGridTip(grdTipNoConv);
-                    stkDialog.Children.Add(grdTipNoConv);
+                    idx++;
                 }
             }
         }

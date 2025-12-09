@@ -125,6 +125,7 @@ namespace Bot.ChromeNs
             Buyer = e.Buyer;
             CurQN = this;
             Desk.Inst.ChangeBuyer(e.Buyer.Nick);
+            Desk.Inst.ChangeSeller(e.Seller.Nick);
 
             if (EvSellerSwitched != null)
             {
@@ -172,7 +173,9 @@ namespace Bot.ChromeNs
         {
             Seller = e.Seller;
             Buyer = e.Buyer;
+            CurQN = this;
             Desk.Inst.ChangeBuyer(e.Buyer.Nick);
+            Desk.Inst.ChangeSeller(e.Seller.Nick);
             if (EvBuyerSwitched != null)
             {
                 EvBuyerSwitched(this, e);

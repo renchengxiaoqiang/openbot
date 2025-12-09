@@ -11,6 +11,7 @@ using Bot.Common.Db;
 using Bot.Common;
 using BotLib.Wpf.Extensions;
 using Bot.ChromeNs;
+using SunnyNetInject;
 
 namespace Bot
 {
@@ -21,7 +22,10 @@ namespace Bot
             ClearTmpPathFiles();
             DeskScanner.LoopScan();
             MyWebSocketServer.WSocketSvrInst.Start();
-            AliWorkbenchInject.ProcessWorkbench();
+            QNInject.StartInject();
+
+            //var script = File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"inject.js"));
+            //IseiyaHttpProxy.StartProxy(script);
         }
 
         private static void ClearTmpPathFiles()

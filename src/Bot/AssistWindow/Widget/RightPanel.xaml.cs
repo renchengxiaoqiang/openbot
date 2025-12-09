@@ -115,7 +115,12 @@ namespace Bot.AssistWindow.Widget
 			tabControl.SelectionChanged += tabControl_SelectionChanged;
 		}
 
-		private TabItem CreateTabItem(TabTypeEnum tabType)
+        public void ChangeSeller(string seller)
+        {
+            lblSeller.Content = seller;
+        }
+
+        private TabItem CreateTabItem(TabTypeEnum tabType)
 		{
 			TabItem tabItem = null;
 			switch (tabType)

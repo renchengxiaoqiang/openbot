@@ -380,6 +380,14 @@ namespace Bot.Automation.ChatDeskNs
             }));
         }
 
+        public void ChangeSeller(string seller)
+        {
+            DispatcherEx.xInvoke(new Action(() =>
+            {
+                inst.AssistWindow.ctlRightPanel.ChangeSeller(seller);
+            }));
+        }
+
         public void AddConversation(string seller, string buyer, string question, string answer,bool isAutoReply)
         {
             DispatcherEx.xInvoke(new Action(() =>
