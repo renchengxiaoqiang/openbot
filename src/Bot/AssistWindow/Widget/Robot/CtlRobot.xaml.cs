@@ -22,21 +22,20 @@ using OpenAI.Chat;
 using BotLib.Extensions;
 using SuperSocket.SocketEngine.Configuration;
 using Top.Api.Domain;
+using Bot.AssistWindow.Widget.Right.Goods;
 
 namespace Bot.AssistWindow.Widget.Robot
 {
     public partial class CtlRobot : UserControl
     {
-        private Desk _desk;
         private RightPanel _rightPanel;
         private WndAssist _wndDontUse;
         private QN _preQN;
         private ConcurrentDictionary<string, List<CtlConversation>> buyerConversations;
 
-        public CtlRobot(Desk desk, RightPanel rp)
+        public CtlRobot(RightPanel rp)
         {
             InitializeComponent();
-            _desk = desk;
             _rightPanel = rp;
             buyerConversations = new ConcurrentDictionary<string, List<CtlConversation>>();
             Loaded += CtlRobot_Loaded;

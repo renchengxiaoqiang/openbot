@@ -16,7 +16,7 @@ using BotLib.Extensions;
 using BotLib.Misc;
 using DbEntity;
 
-namespace Bot.AssistWindow.Widget.Robot
+namespace Bot.AssistWindow.Widget.Right.Goods
 {
     public partial class CtlOneGoods : UserControl
     {

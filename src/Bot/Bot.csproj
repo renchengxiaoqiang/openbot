@@ -225,14 +225,28 @@
     <Compile Include="AssistWindow\NotifyIcon\CtlNotifyIcon.cs" />
     <Compile Include="AssistWindow\NotifyIcon\MenuCreator\HelpMenuCreator.cs" />
     <Compile Include="AssistWindow\NotifyIcon\MenuCreator\SellerMenuCreator.cs" />
-    <Compile Include="AssistWindow\Widget\Robot\CtlConversation.xaml.cs">
-      <DependentUpon>CtlConversation.xaml</DependentUpon>
+    <Compile Include="AssistWindow\Widget\Goods\CtlGoods.xaml.cs">
+      <DependentUpon>CtlGoods.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AssistWindow\Widget\Robot\CtlImage.xaml.cs">
+    <Compile Include="AssistWindow\Widget\Goods\CtlGoodsList.xaml.cs">
+      <DependentUpon>CtlGoodsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Goods\CtlImage.xaml.cs">
       <DependentUpon>CtlImage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AssistWindow\Widget\Robot\CtlOneGoods.xaml.cs">
+    <Compile Include="AssistWindow\Widget\Goods\CtlOneGoods.xaml.cs">
       <DependentUpon>CtlOneGoods.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Goods\CtlSearch.xaml.cs">
+      <DependentUpon>CtlSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Goods\CtlSkus.xaml.cs">
+      <DependentUpon>CtlSkus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssistWindow\Widget\Goods\GoodsSelectedEventArgs.cs" />
+    <Compile Include="AssistWindow\Widget\Goods\WebImageHelper.cs" />
+    <Compile Include="AssistWindow\Widget\Robot\CtlConversation.xaml.cs">
+      <DependentUpon>CtlConversation.xaml</DependentUpon>
     </Compile>
     <Compile Include="AssistWindow\Widget\Robot\CtlRobot.xaml.cs">
       <DependentUpon>CtlRobot.xaml</DependentUpon>
@@ -313,17 +327,33 @@
     <Compile Include="StartUp\BootStrap.cs" />
     <Compile Include="StartUp\Params.cs" />
     <Compile Include="StartUp\StartUp.cs" />
+    <Page Include="AssistWindow\Widget\Goods\CtlGoods.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Goods\CtlGoodsList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Goods\CtlImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Goods\CtlOneGoods.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Goods\CtlSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AssistWindow\Widget\Goods\CtlSkus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AssistWindow\Widget\Robot\CtlConversation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AssistWindow\Widget\Robot\CtlImage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AssistWindow\Widget\Robot\CtlOneGoods.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="AssistWindow\Widget\Robot\CtlRobot.xaml">
       <Generator>MSBuild:Compile</Generator>

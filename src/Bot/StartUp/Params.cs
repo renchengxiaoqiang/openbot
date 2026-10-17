@@ -21,7 +21,7 @@ namespace Bot
 {
     public class Params
     {
-        public const int Version = 90502;
+        public const int Version = 10002;
         public static string VersionStr;
         public const string CreateDateStr = "2023.08.18";
         public static string HelpRoot;
@@ -102,7 +102,7 @@ namespace Bot
         static Params()
         {
             VersionStr = ShareUtil.ConvertVersionToString(Version);
-            HelpRoot = "https://github.com/renchengxiaofeixia";
+            HelpRoot = "https://github.com/renchengxiaoqiang/openbot";
             AppStartTime = DateTime.Now;
             IsAppClosing = false;
         }
@@ -131,7 +131,7 @@ namespace Bot
 
         public class Panel
         {
-            public const string RightPanelCompOrderCsvDefault = "工作台";//"话术,商品,机器人,订单,优惠券";
+            public const string RightPanelCompOrderCsvDefault = "工作台,商品";//"话术,商品,机器人,订单,优惠券";
             public const bool ShortcutIsVisibleDefault = true;
             public const bool GoodsKnowledgeIsVisibleDefault = true;
             public const bool RobotIsVisibleDefault = true;

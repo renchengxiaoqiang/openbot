@@ -11,9 +11,11 @@
 2. 需要打开千牛无障碍模式，如下图
 
 <div align="center">
-  <img src="https://worklink.oss-cn-hangzhou.aliyuncs.com/B78EE5CC4F478BE414D95C1CC12E20E2.png" >
+  <img src="images/1.png" >
   <br>
 </div>
+
+
 
 ### 业务功能
 1. 发图文消息 
@@ -26,7 +28,7 @@
 ## 🎨效果图
 
 <div align="center">
-  <img src="https://worklink.oss-cn-hangzhou.aliyuncs.com/9CD0A7CF011366063DB2E10A20462BA5.png" >
+  <img src="images/2.png" >
   <br>
 </div>
 
@@ -50,8 +52,8 @@
       <td align="center"><strong>微信赞赏码</strong></td>
     </tr>
     <tr>
-      <td><img src="https://worklink.oss-cn-hangzhou.aliyuncs.com/8729262EC5D288D90D678CDC97787B4F.png"  width="300px" alt="微信交流群"></td>
-      <td><img src="https://worklink.oss-cn-hangzhou.aliyuncs.com/D8512B5B322FFAAC3D6927982A12B078.jpg"  width="300px" alt="微信赞赏码"></td>
+      <td><img src="images/3.jpg"  width="300px" alt="微信交流群"></td>
+      <td><img src="images/4.jpg"  width="300px" alt="微信赞赏码"></td>
     </tr>
   </table>
 </div>

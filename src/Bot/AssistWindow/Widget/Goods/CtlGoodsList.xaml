@@ -1,0 +1,55 @@
+<UserControl
+	x:Class="Bot.AssistWindow.Widget.Right.Goods.CtlGoodsList" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.AssistWindow.Widget.Right.Goods" 
+    xmlns:elib="clr-namespace:BotLib.Wpf.Controls;assembly=BotLib">
+	<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+			<RowDefinition
+				Height="auto" />
+		</Grid.RowDefinitions>
+        <local:CtlSearch x:Name="ctlSearch" />
+		<ListBox
+			Name="lstGoods"
+			Grid.Row="1"
+			MinHeight="70"
+			ScrollViewer.VerticalScrollBarVisibility="Auto"
+			ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+		<Grid
+			Name="grdPage"
+			Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition
+					Width="auto" />
+				<ColumnDefinition
+					Width="auto" />
+			</Grid.ColumnDefinitions>
+			<TextBlock
+				Name="tblkGoodsCount"
+				Padding="5 0 0 0" />
+			<elib:CtlPager
+				Name="pager"
+				Grid.Column="1" />
+			<Button
+				Grid.Column="2"
+				Padding="5 0"
+				Margin="20 0 0 0"
+				ToolTip="重新下载宝贝链接 &#xA; &#xA;每天自动下载一次 &#xA; &#xA;每天限制手动刷新2次"
+				Click="Button_RefreshGoodsInfo_Click">刷新</Button>
+		</Grid>
+		<Grid
+			Name="grdLoading"
+			Visibility="Collapsed">
+			<ProgressBar
+				Height="20"
+				IsIndeterminate="True"
+				Margin="20" />
+		</Grid>
+	</Grid>
+</UserControl>

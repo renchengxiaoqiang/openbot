@@ -362,6 +362,11 @@ namespace Bot.ChromeNs
             return await InvokeMTop<ItemRecordResponse>("mtop.taobao.qianniu.cs.item.record.query",new { encryptId });
         }
 
+        public async Task<ZnkfItemSearchResponse> GetItems(int pageNo, int pageSize, string keyWord)
+        {
+            return await InvokeMTop<ZnkfItemSearchResponse>("mtop.taobao.qianniu.cs.item.recommend.item.search", new { pageSize, pageNo, keyWord, sortKey = "sold", desc = true, type= 0, queryGift = false });
+        }
+
 
         public async Task<SearchUserResponse> SearchBuyerUser(string searchQuery)
         {

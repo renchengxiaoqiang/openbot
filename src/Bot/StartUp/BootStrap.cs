@@ -16,15 +16,12 @@ namespace Bot
 {
     public class BootStrap
     {
-        public static void Init()
+        public static async Task Init()
         {
             ClearTmpPathFiles();
             DeskScanner.LoopScan();
             MyWebSocketServer.WSocketSvrInst.Start();
-            QNInject.StartInject();
-
-            //var script = File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"inject.js"));
-            //IseiyaHttpProxy.StartProxy(script);
+            await QNInject.StartInjectAsync();
         }
 
         private static void ClearTmpPathFiles()

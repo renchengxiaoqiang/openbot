@@ -17,6 +17,9 @@ namespace DbEntity
 
     public class ZnkfItemSearchData
     {
+        public int page { get; set; }
+        public int pageSize { get; set; }
+        public int totalCount { get; set; }
         public List<ZnkfItem> data { get; set; }
     }
 

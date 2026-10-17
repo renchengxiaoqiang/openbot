@@ -14,17 +14,15 @@ namespace BotLib.Wpf.Controls
 		public event EventHandler<PageChangedEventArgs> EvPageNumberChanged;
 
         private DelayCaller _dcaller;
-        private bool _collapseOnOnePage = true;
         private int _pageCount;
         private int _pageNo;
 
-		public void Init(int pageCount, bool collapseOnOnePage = true, int pageNo = 1)
+		public void Init(int pageCount, int pageNo = 1)
 		{
 			base.IsEnabled = true;
 			Util.Assert(pageNo > 0 && pageNo <= pageCount);
 			tblkPageCount.Visibility = Visibility.Visible;
 			tboxPageNo.IsEnabled = true;
-			_collapseOnOnePage = collapseOnOnePage;
 			PageCount = pageCount;
 			PageNo = pageNo;
 			if (PageNo == pageNo)
@@ -33,11 +31,11 @@ namespace BotLib.Wpf.Controls
 			}
 		}
 
-		public void Init(int recCount, int recPerPage, bool collapseOnOnePage = true, int pageNo = 1)
+		public void Init(int recCount, int recPerPage, int pageNo = 1)
 		{
 			Util.Assert(recCount >= 0 && recPerPage > 0);
 			int pageCount = (int)(1.0 + (double)recCount * 1.0 / (double)recPerPage);
-			Init(pageCount, collapseOnOnePage, pageNo);
+			Init(pageCount, pageNo);
 		}
 
 		public void InitInfinitePageCount(bool disableOnPageChanged = true)
@@ -59,14 +57,6 @@ namespace BotLib.Wpf.Controls
 				Util.Assert(value > 0);
 				_pageCount = value;
 				tblkPageCount.Text = "/" + value;
-				if (_collapseOnOnePage && value == 1)
-				{
-					base.Visibility = Visibility.Collapsed;
-				}
-				else
-				{
-					base.Visibility = Visibility.Visible;
-				}
 			}
 		}
 
@@ -103,7 +93,6 @@ namespace BotLib.Wpf.Controls
 			EvPageNumberChanged = null;
 			_pageNo = 0;
 			_pageCount = 0;
-			_collapseOnOnePage = true;
 		}
 
 		public void ShowFinished(int showRecCount, int recordPerPage)
@@ -112,13 +101,13 @@ namespace BotLib.Wpf.Controls
 			{
 				if (showRecCount == 0 && PageNo > 1)
 				{
-					Init(PageNo - 1, true, PageNo - 1);
+					Init(PageCount - 1, PageNo - 1);
 				}
 				else
 				{
 					if (showRecCount < recordPerPage)
 					{
-						Init(PageNo, true, PageNo);
+						Init(PageCount, PageNo);
 					}
 				}
 			}

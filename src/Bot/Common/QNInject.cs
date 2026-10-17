@@ -1,5 +1,7 @@
-﻿using IniParser.Model;
+﻿using BotLib;
+using ICSharpCode.SharpZipLib.Zip;
 using IniParser;
+using IniParser.Model;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -8,9 +10,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ICSharpCode.SharpZipLib.Zip;
-using BotLib;
 using System.Windows;
+using System.Windows.Interop;
 
 namespace Bot.Common
 {
@@ -25,20 +26,21 @@ namespace Bot.Common
         private const string overWriteUrl = "https://worklink.oss-cn-hangzhou.aliyuncs.com/5CFB5E11D17E63CDD8CB37B52FA6ACFD.js"; 
 
 
-        public static async Task StartInject()
+        public static async Task StartInjectAsync()
         {
             try
             {
                 string installPath = FindInstallPath();
                 if (string.IsNullOrEmpty(installPath))
                 {
-                    MessageBox.Show("没有检测到安装的千牛!!");
+                    MsgBox.ShowTrayTip("没有检测到安装的千牛!!", "提示", 10);
+                    return;
                 }
 
                 var resourcePath = FindResourcePath(installPath);
                 if (string.IsNullOrEmpty(resourcePath))
                 {
-                    MessageBox.Show("获取千牛资源目录失败!!");
+                    MsgBox.ShowTrayTip("获取千牛资源目录失败!!", "提示", 10);
                     return;
                 }
 
@@ -66,11 +68,11 @@ namespace Bot.Common
 
                 if (InjectScript(resourcePath))
                 {
-                    MessageBox.Show("千牛插件注入成功，请重新启动千牛!!");
+                    MsgBox.ShowTrayTip("千牛插件注入成功，请重新启动千牛!!", "提示", 10);
                 }
                 else
                 {
-                    MessageBox.Show("千牛插件注入失败!!");
+                    MsgBox.ShowTrayTip("千牛插件注入失败!!", "提示", 10);
                 }
             }
             catch (Exception ex)

@@ -24,6 +24,7 @@ using Bot.Options;
 using System.Linq;
 using System.Threading.Tasks;
 using Bot.AssistWindow.Widget.Robot;
+using Bot.AssistWindow.Widget.Right.Goods;
 
 namespace Bot.AssistWindow.Widget
 {
@@ -128,13 +129,26 @@ namespace Bot.AssistWindow.Widget
                 case TabTypeEnum.Robot:
                     tabItem = TabRobot();
                     break;
+                case TabTypeEnum.Goods:
+                    tabItem = TabGoods();
+                    break;
                 default:
 					break;
 			}
 			return tabItem;
 		}
 
-		private TabTypeEnum GetTabType(string typeName)
+        private TabItem TabGoods()
+        {
+            return new TabItem
+            {
+                Header = "商品",
+                Content = new CtlGoods(this)
+            };
+        }
+        
+
+        private TabTypeEnum GetTabType(string typeName)
 		{
 			var tabType = TabTypeEnum.Unknown;
 			switch (typeName)
@@ -185,7 +199,7 @@ namespace Bot.AssistWindow.Widget
             return new TabItem
             {
                 Header = "工作台",
-                Content = new CtlRobot(Wnd.Desk,this)
+                Content = new CtlRobot(this)
             };
         }
 		private void AddTabItem(TabItem tabItem, TabTypeEnum tabType)

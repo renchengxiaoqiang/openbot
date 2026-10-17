@@ -19,6 +19,7 @@ using OpenAI.Chat;
 using System.Text.Json;
 using Newtonsoft.Json.Linq;
 using static Bot.Params;
+using System.Collections.Concurrent;
 
 namespace Bot.ChromeNs
 {
@@ -29,7 +30,7 @@ namespace Bot.ChromeNs
         public event EventHandler<MessageNotifyEventArgs> EvMessageNotity;
         public event EventHandler<RecieveNewMessageEventArgs> EvRecieveNewMessage;
         public event EventHandler<ShopRobotReceriveNewMessageEventArgs> EvShopRobotReceriveNewMessage;
-        public static HashSet<QN> QNSet { get; set; }
+        public static ConcurrentBag<QN> QNBag { get; set; }
         public string QnVersion { get; set; }
 
         private CDPClient cdp;
@@ -77,7 +78,7 @@ namespace Bot.ChromeNs
 
         static QN()
         {
-            QNSet = new HashSet<QN>();
+            QNBag = new ConcurrentBag<QN>();
         }
 
         public QN(LocalUser seller)
@@ -184,11 +185,11 @@ namespace Bot.ChromeNs
 
         public static QN GetByNick(LocalUser seller)
         {
-            var qn = QNSet.FirstOrDefault(q => q._seller.Nick == seller.Nick || q._seller.Display == seller.Display);
+            var qn = QNBag.FirstOrDefault(q => q._seller.Nick == seller.Nick || q._seller.Display == seller.Display);
             if (qn == null)
             {
                 qn = new QN(seller);
-                QNSet.Add(qn);
+                QNBag.Add(qn);
             }
             return qn;
         }
@@ -274,6 +275,11 @@ namespace Bot.ChromeNs
         public async Task<ItemRecordResponse> GetItemRecords(string encryptId)
         {
             return await cdp.GetItemRecords(encryptId);
+        }
+
+        public async Task<ZnkfItemSearchResponse> GetItems(int pageNo,int pageSize = 1,string keyWord = "")
+        {
+            return await cdp.GetItems(pageNo, pageSize, keyWord);
         }
 
 

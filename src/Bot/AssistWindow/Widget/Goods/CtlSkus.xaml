@@ -1,0 +1,55 @@
+<UserControl
+	x:Class="Bot.AssistWindow.Widget.Right.Goods.CtlSkus" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Bot.AssistWindow.Widget.Right.Goods">
+	<ScrollViewer
+		HorizontalScrollBarVisibility="Disabled"
+		VerticalScrollBarVisibility="Auto">
+		<Grid
+			Name="gridMain">
+			<Grid.RowDefinitions>
+				<RowDefinition
+					Height="20" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="5*" />
+				<ColumnDefinition
+					Width="3*" />
+				<ColumnDefinition
+					Width="2*" />
+			</Grid.ColumnDefinitions>
+			<Rectangle
+				Name="recSelectBack"
+				Grid.ColumnSpan="3"
+				Fill="#FFF0F8FF" />
+			<Rectangle
+				Grid.ColumnSpan="3"
+				Fill="#FF9050" />
+			<TextBlock
+				Text="宝贝SKU"
+				Padding="6 3 3 3" />
+			<TextBlock
+				Grid.Column="1"
+				Padding="6 3 3 3"
+				Text="商家编码" />
+			<TextBlock
+				Grid.Column="2"
+				Padding="6 3 3 3"
+				Text="价格" />
+			<GridSplitter
+				Grid.Column="0"
+				Width="2"
+				HorizontalAlignment="Right"
+				ShowsPreview="True" />
+			<GridSplitter
+				Grid.Column="1"
+				Width="2"
+				HorizontalAlignment="Right"
+				ShowsPreview="True" />
+		</Grid>
+	</ScrollViewer>
+</UserControl>

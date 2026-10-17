@@ -16,7 +16,7 @@ using BotLib.Extensions;
 using BotLib.Misc;
 using BotLib.Wpf.Extensions;
 
-namespace Bot.AssistWindow.Widget.Robot
+namespace Bot.AssistWindow.Widget.Right.Goods
 {
 	public partial class CtlImage : UserControl
     {
